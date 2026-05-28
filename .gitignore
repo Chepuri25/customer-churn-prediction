@@ -1,0 +1,21 @@
+# Data files
+data/*.csv
+
+# Model files
+models/*.pkl
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Mac files
+.DS_Store
+
+# Environment
+venv/
+.env
