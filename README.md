@@ -106,3 +106,5 @@ Navigate to `notebooks/` and run 01 → 02 → 03 → 04
 
 ---
 **Built with ❤️ by Pravallika Chepuri | Arizona State University**
+## 🚀 Live Demo
+👉 **[Try the app here](YOUR_STREAMLIT_URL)**
