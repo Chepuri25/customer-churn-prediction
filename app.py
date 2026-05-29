@@ -574,10 +574,17 @@ with tab3:
 
     st.markdown("---")
     st.markdown("#### 💼 Business Recommendations")
-    st.info("📌 Offer **annual contracts** to month-to-month customers with >60% churn risk")
-    st.info("📌 Provide **loyalty discounts** for customers with tenure < 12 months")
-    st.info("📌 Offer **free tech support trial** for high-charge customers")
-    st.info("📌 **Proactive outreach** when churn probability exceeds 50%")
+    recs = [
+        ("🎯", "Offer", "annual contracts", "to month-to-month customers with >60% churn risk"),
+        ("💰", "Provide", "loyalty discounts", "for customers with tenure under 12 months"),
+        ("🛠️", "Offer a", "free tech support trial", "for high monthly charge customers"),
+        ("📞", "Send", "proactive outreach", "when churn probability exceeds 50%"),
+    ]
+    for icon, pre, bold, post in recs:
+        st.markdown(f'''<div class="recommend-card">
+            <p class="recommend-text">{icon} &nbsp;
+            {pre} <strong>{bold}</strong> {post}</p>
+        </div>''', unsafe_allow_html=True)
 
 # ── Footer ───────────────────────────────────────────────────
 st.markdown("---")
