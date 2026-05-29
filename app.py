@@ -19,35 +19,23 @@ st.markdown("""
         font-family: 'Inter', sans-serif;
     }
 
-    /* ── Background: warm brown gradient light to dark ── */
     .stApp {
         background: linear-gradient(160deg,
-            #f5e6d3 0%,
-            #e8c9a0 25%,
-            #c4956a 55%,
-            #8b5e3c 80%,
+            #f5e6d3 0%, #e8c9a0 25%,
+            #c4956a 55%, #8b5e3c 80%,
             #4a2c0a 100%);
         min-height: 100vh;
     }
 
-    /* ── Sidebar ── */
     section[data-testid="stSidebar"] {
         background: linear-gradient(180deg,
-            #3d1f00 0%,
-            #5c3317 50%,
-            #7a4a2a 100%);
+            #3d1f00 0%, #5c3317 50%, #7a4a2a 100%);
         border-right: 2px solid rgba(255,200,130,0.3);
     }
     section[data-testid="stSidebar"] * {
         color: #f5e6d3 !important;
     }
-    section[data-testid="stSidebar"] .stSelectbox label,
-    section[data-testid="stSidebar"] .stSlider label {
-        color: #ffd9a0 !important;
-        font-weight: 500 !important;
-    }
 
-    /* ── BIG Title ── */
     .main-title {
         font-family: 'Playfair Display', serif;
         font-size: 4.5rem !important;
@@ -59,7 +47,6 @@ st.markdown("""
             #4a2c0a, #8b5e3c, #c4956a, #8b5e3c, #4a2c0a);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: none;
         letter-spacing: -1px;
     }
 
@@ -69,10 +56,8 @@ st.markdown("""
         text-align: center;
         margin-bottom: 2rem;
         font-weight: 400;
-        letter-spacing: 0.5px;
     }
 
-    /* ── Metric Cards ── */
     [data-testid="metric-container"] {
         background: rgba(255, 240, 215, 0.6);
         border: 1.5px solid rgba(139, 94, 60, 0.4);
@@ -80,19 +65,15 @@ st.markdown("""
         padding: 1rem;
         backdrop-filter: blur(8px);
         box-shadow: 0 4px 15px rgba(74, 44, 10, 0.15);
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition: transform 0.2s;
     }
     [data-testid="metric-container"]:hover {
         transform: translateY(-4px);
-        box-shadow: 0 8px 25px rgba(74, 44, 10, 0.25);
-        border-color: rgba(139, 94, 60, 0.7);
     }
     [data-testid="metric-container"] label {
         color: #7a4a2a !important;
         font-size: 0.85rem !important;
         font-weight: 600 !important;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
     }
     [data-testid="metric-container"] [data-testid="stMetricValue"] {
         color: #4a2c0a !important;
@@ -100,7 +81,6 @@ st.markdown("""
         font-size: 1.8rem !important;
     }
 
-    /* ── Tabs ── */
     .stTabs [data-baseweb="tab-list"] {
         background: rgba(255, 240, 215, 0.5);
         border-radius: 14px;
@@ -113,17 +93,14 @@ st.markdown("""
         color: #7a4a2a !important;
         font-weight: 500;
         padding: 8px 22px;
-        font-size: 0.95rem;
     }
     .stTabs [aria-selected="true"] {
         background: linear-gradient(135deg,
             #8b5e3c, #4a2c0a) !important;
         color: #f5e6d3 !important;
         font-weight: 600 !important;
-        box-shadow: 0 3px 10px rgba(74, 44, 10, 0.3);
     }
 
-    /* ── Progress Bar ── */
     .stProgress > div > div {
         background: linear-gradient(90deg,
             #c4956a, #8b5e3c, #4a2c0a) !important;
@@ -134,11 +111,6 @@ st.markdown("""
         border-radius: 10px !important;
     }
 
-    /* ── Alert Boxes ── */
-    div[data-testid="stAlert"] {
-        border-radius: 12px !important;
-        backdrop-filter: blur(8px);
-    }
     .stSuccess {
         background: rgba(180, 230, 180, 0.4) !important;
         border: 1.5px solid rgba(60, 150, 60, 0.5) !important;
@@ -164,26 +136,23 @@ st.markdown("""
         color: #1a3a7a !important;
     }
 
-    /* ── Prediction Cards ── */
     .card-high {
         background: linear-gradient(135deg,
-            rgba(200, 80, 50, 0.2), rgba(200, 80, 50, 0.08));
-        border: 2px solid rgba(200, 80, 50, 0.5);
+            rgba(200,80,50,0.2), rgba(200,80,50,0.08));
+        border: 2px solid rgba(200,80,50,0.5);
         border-radius: 20px;
         padding: 2.5rem;
         text-align: center;
         margin: 1rem 0;
-        box-shadow: 0 8px 25px rgba(200, 80, 50, 0.15);
     }
     .card-low {
         background: linear-gradient(135deg,
-            rgba(60, 160, 80, 0.2), rgba(60, 160, 80, 0.08));
-        border: 2px solid rgba(60, 160, 80, 0.5);
+            rgba(60,160,80,0.2), rgba(60,160,80,0.08));
+        border: 2px solid rgba(60,160,80,0.5);
         border-radius: 20px;
         padding: 2.5rem;
         text-align: center;
         margin: 1rem 0;
-        box-shadow: 0 8px 25px rgba(60, 160, 80, 0.15);
     }
     .card-title {
         font-family: 'Playfair Display', serif;
@@ -195,37 +164,57 @@ st.markdown("""
     .card-subtitle {
         font-size: 1.1rem;
         color: #7a4a2a;
-        font-weight: 400;
     }
 
-    /* ── Dataframes ── */
-    .stDataFrame {
-        background: rgba(255, 240, 215, 0.5) !important;
-        border-radius: 12px !important;
-        border: 1px solid rgba(139, 94, 60, 0.3) !important;
+    /* ── Profile Cards — warm brown, NO dark tables ── */
+    .profile-card {
+        background: rgba(255, 245, 230, 0.75);
+        border: 1.5px solid rgba(139, 94, 60, 0.35);
+        border-radius: 16px;
+        padding: 1.2rem 1.5rem;
+        margin-bottom: 1.2rem;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 4px 12px rgba(74, 44, 10, 0.1);
+    }
+    .profile-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.55rem 0;
+        border-bottom: 1px solid rgba(139, 94, 60, 0.15);
+        font-size: 0.95rem;
+    }
+    .profile-row:last-child {
+        border-bottom: none;
+    }
+    .profile-label {
+        color: #7a4a2a;
+        font-weight: 500;
+        min-width: 160px;
+    }
+    .profile-value {
+        color: #4a2c0a;
+        font-weight: 600;
+        text-align: right;
+    }
+    .profile-section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #4a2c0a;
+        margin: 1.2rem 0 0.6rem 0;
     }
 
-    /* ── Section headers ── */
     h2, h3, h4 {
         color: #4a2c0a !important;
         font-weight: 700 !important;
     }
 
-    /* ── Divider ── */
     hr {
         border-color: rgba(139, 94, 60, 0.3) !important;
         margin: 1.5rem 0 !important;
     }
 
-    /* ── Selectbox & Slider ── */
-    .stSelectbox [data-baseweb="select"] > div {
-        background: rgba(255, 240, 215, 0.7) !important;
-        border-color: rgba(139, 94, 60, 0.4) !important;
-        border-radius: 10px !important;
-        color: #4a2c0a !important;
-    }
-
-    /* ── Footer ── */
     .footer {
         text-align: center;
         padding: 2rem 0 1rem;
@@ -236,10 +225,7 @@ st.markdown("""
         color: #4a2c0a !important;
         font-weight: 600;
         text-decoration: none;
-        border-bottom: 1px solid rgba(74, 44, 10, 0.3);
-    }
-    .footer a:hover {
-        border-bottom-color: #4a2c0a;
+        border-bottom: 1px solid rgba(74,44,10,0.3);
     }
 </style>
 """, unsafe_allow_html=True)
@@ -267,7 +253,6 @@ st.markdown(
     'Built by Pravallika Chepuri · Arizona State University</div>',
     unsafe_allow_html=True)
 
-# ── Stats Banner ─────────────────────────────────────────────
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("🎯 Accuracy",      "80%+")
 c2.metric("📊 ROC-AUC",       "0.85+")
@@ -317,7 +302,7 @@ def user_inputs():
                        ["Month-to-month","One year","Two year"])
     paperless_billing= st.sidebar.selectbox("Paperless Billing",
                        ["No","Yes"])
-    payment_method   = st.sidebar.selectbox("Payment Method", [
+    payment_method   = st.sidebar.selectbox("Payment Method",[
                        "Electronic check","Mailed check",
                        "Bank transfer (automatic)",
                        "Credit card (automatic)"])
@@ -326,6 +311,30 @@ def user_inputs():
     total_charges    = st.sidebar.slider("Total Charges ($)",
                        0.0, 9000.0, 1000.0)
 
+    # Readable profile (for display)
+    readable = {
+        'Gender'            : gender,
+        'Senior Citizen'    : senior_citizen,
+        'Partner'           : partner,
+        'Dependents'        : dependents,
+        'Tenure'            : f"{tenure} months",
+        'Phone Service'     : phone_service,
+        'Multiple Lines'    : multiple_lines,
+        'Internet Service'  : internet_service,
+        'Online Security'   : online_security,
+        'Online Backup'     : online_backup,
+        'Device Protection' : device_protection,
+        'Tech Support'      : tech_support,
+        'Streaming TV'      : streaming_tv,
+        'Streaming Movies'  : streaming_movies,
+        'Contract'          : contract,
+        'Paperless Billing' : paperless_billing,
+        'Payment Method'    : payment_method,
+        'Monthly Charges'   : f"${monthly_charges:.2f}",
+        'Total Charges'     : f"${total_charges:.2f}",
+    }
+
+    # Encoded for model
     data = {
         'gender'           : 1 if gender == "Male" else 0,
         'SeniorCitizen'    : 1 if senior_citizen == "Yes" else 0,
@@ -360,7 +369,7 @@ def user_inputs():
         'MonthlyCharges'   : monthly_charges,
         'TotalCharges'     : total_charges
     }
-    return pd.DataFrame([data]), {
+    return pd.DataFrame([data]), readable, {
         'tenure'          : tenure,
         'contract'        : contract,
         'monthly_charges' : monthly_charges,
@@ -368,7 +377,7 @@ def user_inputs():
         'internet_service': internet_service
     }
 
-input_df, raw = user_inputs()
+input_df, readable, raw = user_inputs()
 
 # ── Predict ──────────────────────────────────────────────────
 input_scaled  = scaler.transform(input_df)
@@ -383,6 +392,7 @@ tab1, tab2, tab3 = st.tabs([
     "📊  Customer Profile",
     "💡  Insights & Tips"])
 
+# ── TAB 1 ────────────────────────────────────────────────────
 with tab1:
     col1, col2 = st.columns([1, 1], gap="large")
 
@@ -409,7 +419,6 @@ with tab1:
         m1.metric("🔴 Churn Risk",  f"{churn_prob:.1f}%")
         m2.metric("🟢 Retention",   f"{no_churn_prob:.1f}%")
 
-        st.markdown("**Risk Level:**")
         if churn_prob < 30:
             st.success(f"🟢 LOW RISK — {churn_prob:.1f}%")
         elif churn_prob < 60:
@@ -456,7 +465,7 @@ with tab1:
 
         if raw['internet_service'] == "Fiber optic":
             risk_factors.append(
-                "⚠️ **Fiber optic** — higher expectations")
+                "⚠️ **Fiber optic** — higher churn rate")
             risk_score += 1
 
         if risk_factors:
@@ -471,38 +480,66 @@ with tab1:
         st.markdown(f"**Overall Risk Score: {risk_score}/9**")
         st.progress(int((risk_score / 9) * 100))
 
+# ── TAB 2 — Beautiful Profile Cards ──────────────────────────
 with tab2:
-    st.markdown("#### 👤 Demographics")
-    d1, d2 = st.columns(2)
-    with d1:
-        st.dataframe(
-            input_df[['gender','SeniorCitizen',
-                      'Partner','Dependents']].T
-            .rename(columns={0:'Value'}),
-            use_container_width=True)
-    with d2:
-        st.dataframe(
-            input_df[['tenure','MonthlyCharges',
-                      'TotalCharges']].T
-            .rename(columns={0:'Value'}),
-            use_container_width=True)
 
-    st.markdown("#### 📱 Services")
-    st.dataframe(
-        input_df[['PhoneService','MultipleLines',
-                  'InternetService','OnlineSecurity',
-                  'OnlineBackup','TechSupport',
-                  'StreamingTV','StreamingMovies']].T
-        .rename(columns={0:'Value'}),
-        use_container_width=True)
+    col1, col2 = st.columns(2)
 
-    st.markdown("#### 💳 Billing")
-    st.dataframe(
-        input_df[['Contract','PaperlessBilling',
-                  'PaymentMethod']].T
-        .rename(columns={0:'Value'}),
-        use_container_width=True)
+    with col1:
+        st.markdown(
+            '<div class="profile-section-title">'
+            '👤 Demographics</div>',
+            unsafe_allow_html=True)
+        demo_items = ['Gender','Senior Citizen',
+                      'Partner','Dependents']
+        rows = "".join([
+            f'<div class="profile-row">'
+            f'<span class="profile-label">{k}</span>'
+            f'<span class="profile-value">{readable[k]}</span>'
+            f'</div>'
+            for k in demo_items])
+        st.markdown(
+            f'<div class="profile-card">{rows}</div>',
+            unsafe_allow_html=True)
 
+        st.markdown(
+            '<div class="profile-section-title">'
+            '💳 Billing</div>',
+            unsafe_allow_html=True)
+        bill_items = ['Contract','Paperless Billing',
+                      'Payment Method',
+                      'Monthly Charges','Total Charges']
+        rows = "".join([
+            f'<div class="profile-row">'
+            f'<span class="profile-label">{k}</span>'
+            f'<span class="profile-value">{readable[k]}</span>'
+            f'</div>'
+            for k in bill_items])
+        st.markdown(
+            f'<div class="profile-card">{rows}</div>',
+            unsafe_allow_html=True)
+
+    with col2:
+        st.markdown(
+            '<div class="profile-section-title">'
+            '📱 Services</div>',
+            unsafe_allow_html=True)
+        svc_items = ['Tenure','Phone Service',
+                     'Multiple Lines','Internet Service',
+                     'Online Security','Online Backup',
+                     'Device Protection','Tech Support',
+                     'Streaming TV','Streaming Movies']
+        rows = "".join([
+            f'<div class="profile-row">'
+            f'<span class="profile-label">{k}</span>'
+            f'<span class="profile-value">{readable[k]}</span>'
+            f'</div>'
+            for k in svc_items])
+        st.markdown(
+            f'<div class="profile-card">{rows}</div>',
+            unsafe_allow_html=True)
+
+# ── TAB 3 ────────────────────────────────────────────────────
 with tab3:
     col1, col2 = st.columns(2)
 
