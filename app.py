@@ -13,207 +13,233 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-    /* ── Google Font ── */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-    /* ── Global ── */
     html, body, [class*="css"] {
         font-family: 'Inter', sans-serif;
     }
 
-    /* ── Background ── */
+    /* ── Background: warm brown gradient light to dark ── */
     .stApp {
-        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-        color: #ffffff;
+        background: linear-gradient(160deg,
+            #f5e6d3 0%,
+            #e8c9a0 25%,
+            #c4956a 55%,
+            #8b5e3c 80%,
+            #4a2c0a 100%);
+        min-height: 100vh;
     }
 
     /* ── Sidebar ── */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-        border-right: 1px solid rgba(255,255,255,0.1);
+        background: linear-gradient(180deg,
+            #3d1f00 0%,
+            #5c3317 50%,
+            #7a4a2a 100%);
+        border-right: 2px solid rgba(255,200,130,0.3);
     }
     section[data-testid="stSidebar"] * {
-        color: #e0e0e0 !important;
+        color: #f5e6d3 !important;
+    }
+    section[data-testid="stSidebar"] .stSelectbox label,
+    section[data-testid="stSidebar"] .stSlider label {
+        color: #ffd9a0 !important;
+        font-weight: 500 !important;
     }
 
-    /* ── Main Header ── */
-    .main-header {
-        font-size: 3rem;
+    /* ── BIG Title ── */
+    .main-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 4.5rem !important;
         font-weight: 700;
-        background: linear-gradient(90deg, #00d2ff, #7b2ff7, #ff6b6b);
+        text-align: center;
+        padding: 2rem 0 0.5rem 0;
+        line-height: 1.1;
+        background: linear-gradient(90deg,
+            #4a2c0a, #8b5e3c, #c4956a, #8b5e3c, #4a2c0a);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-align: center;
-        padding: 1.5rem 0 0.5rem 0;
+        text-shadow: none;
         letter-spacing: -1px;
     }
 
-    .sub-header {
-        font-size: 1rem;
-        color: rgba(255,255,255,0.6);
+    .sub-title {
+        font-size: 1.15rem;
+        color: #5c3317;
         text-align: center;
         margin-bottom: 2rem;
-        font-weight: 300;
+        font-weight: 400;
+        letter-spacing: 0.5px;
     }
 
     /* ── Metric Cards ── */
     [data-testid="metric-container"] {
-        background: rgba(255,255,255,0.07);
-        border: 1px solid rgba(255,255,255,0.15);
+        background: rgba(255, 240, 215, 0.6);
+        border: 1.5px solid rgba(139, 94, 60, 0.4);
         border-radius: 16px;
         padding: 1rem;
-        backdrop-filter: blur(10px);
-        transition: transform 0.2s;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 15px rgba(74, 44, 10, 0.15);
+        transition: transform 0.2s, box-shadow 0.2s;
     }
     [data-testid="metric-container"]:hover {
-        transform: translateY(-3px);
-        border-color: rgba(0,210,255,0.4);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(74, 44, 10, 0.25);
+        border-color: rgba(139, 94, 60, 0.7);
     }
     [data-testid="metric-container"] label {
-        color: rgba(255,255,255,0.6) !important;
+        color: #7a4a2a !important;
         font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
     [data-testid="metric-container"] [data-testid="stMetricValue"] {
-        color: #00d2ff !important;
+        color: #4a2c0a !important;
         font-weight: 700 !important;
-        font-size: 1.6rem !important;
+        font-size: 1.8rem !important;
     }
 
     /* ── Tabs ── */
     .stTabs [data-baseweb="tab-list"] {
-        background: rgba(255,255,255,0.05);
-        border-radius: 12px;
-        padding: 4px;
-        gap: 4px;
+        background: rgba(255, 240, 215, 0.5);
+        border-radius: 14px;
+        padding: 5px;
+        gap: 5px;
+        border: 1px solid rgba(139, 94, 60, 0.3);
     }
     .stTabs [data-baseweb="tab"] {
         border-radius: 10px;
-        color: rgba(255,255,255,0.6) !important;
+        color: #7a4a2a !important;
         font-weight: 500;
-        padding: 8px 20px;
+        padding: 8px 22px;
+        font-size: 0.95rem;
     }
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, #00d2ff, #7b2ff7) !important;
-        color: white !important;
+        background: linear-gradient(135deg,
+            #8b5e3c, #4a2c0a) !important;
+        color: #f5e6d3 !important;
+        font-weight: 600 !important;
+        box-shadow: 0 3px 10px rgba(74, 44, 10, 0.3);
     }
 
-    /* ── Buttons ── */
-    .stButton>button {
-        background: linear-gradient(135deg, #00d2ff, #7b2ff7);
-        color: white;
-        border: none;
-        border-radius: 10px;
-        padding: 0.5rem 2rem;
-        font-weight: 600;
-        font-size: 1rem;
-        transition: opacity 0.2s;
+    /* ── Progress Bar ── */
+    .stProgress > div > div {
+        background: linear-gradient(90deg,
+            #c4956a, #8b5e3c, #4a2c0a) !important;
+        border-radius: 10px !important;
     }
-    .stButton>button:hover {
-        opacity: 0.85;
+    .stProgress > div {
+        background: rgba(139, 94, 60, 0.2) !important;
+        border-radius: 10px !important;
     }
 
-    /* ── Success / Error / Warning Boxes ── */
-    .stSuccess, div[data-baseweb="notification"][kind="positive"] {
-        background: rgba(0, 255, 136, 0.1) !important;
-        border: 1px solid rgba(0, 255, 136, 0.3) !important;
+    /* ── Alert Boxes ── */
+    div[data-testid="stAlert"] {
         border-radius: 12px !important;
-        color: #00ff88 !important;
+        backdrop-filter: blur(8px);
     }
-    .stError, div[data-baseweb="notification"][kind="negative"] {
-        background: rgba(255, 75, 75, 0.1) !important;
-        border: 1px solid rgba(255, 75, 75, 0.3) !important;
+    .stSuccess {
+        background: rgba(180, 230, 180, 0.4) !important;
+        border: 1.5px solid rgba(60, 150, 60, 0.5) !important;
         border-radius: 12px !important;
-        color: #ff4b4b !important;
+        color: #1a5c1a !important;
     }
-    .stWarning, div[data-baseweb="notification"][kind="warning"] {
-        background: rgba(255, 170, 0, 0.1) !important;
-        border: 1px solid rgba(255, 170, 0, 0.3) !important;
+    .stError {
+        background: rgba(230, 150, 130, 0.4) !important;
+        border: 1.5px solid rgba(180, 60, 40, 0.5) !important;
         border-radius: 12px !important;
-        color: #ffaa00 !important;
+        color: #7a1a0a !important;
+    }
+    .stWarning {
+        background: rgba(240, 200, 130, 0.5) !important;
+        border: 1.5px solid rgba(180, 120, 30, 0.5) !important;
+        border-radius: 12px !important;
+        color: #6b4400 !important;
     }
     .stInfo {
-        background: rgba(0, 210, 255, 0.1) !important;
-        border: 1px solid rgba(0, 210, 255, 0.3) !important;
+        background: rgba(200, 220, 255, 0.4) !important;
+        border: 1.5px solid rgba(80, 120, 200, 0.5) !important;
         border-radius: 12px !important;
-        color: #00d2ff !important;
+        color: #1a3a7a !important;
+    }
+
+    /* ── Prediction Cards ── */
+    .card-high {
+        background: linear-gradient(135deg,
+            rgba(200, 80, 50, 0.2), rgba(200, 80, 50, 0.08));
+        border: 2px solid rgba(200, 80, 50, 0.5);
+        border-radius: 20px;
+        padding: 2.5rem;
+        text-align: center;
+        margin: 1rem 0;
+        box-shadow: 0 8px 25px rgba(200, 80, 50, 0.15);
+    }
+    .card-low {
+        background: linear-gradient(135deg,
+            rgba(60, 160, 80, 0.2), rgba(60, 160, 80, 0.08));
+        border: 2px solid rgba(60, 160, 80, 0.5);
+        border-radius: 20px;
+        padding: 2.5rem;
+        text-align: center;
+        margin: 1rem 0;
+        box-shadow: 0 8px 25px rgba(60, 160, 80, 0.15);
+    }
+    .card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #4a2c0a;
+        margin-bottom: 0.5rem;
+    }
+    .card-subtitle {
+        font-size: 1.1rem;
+        color: #7a4a2a;
+        font-weight: 400;
     }
 
     /* ── Dataframes ── */
     .stDataFrame {
-        background: rgba(255,255,255,0.05) !important;
+        background: rgba(255, 240, 215, 0.5) !important;
         border-radius: 12px !important;
-        border: 1px solid rgba(255,255,255,0.1) !important;
+        border: 1px solid rgba(139, 94, 60, 0.3) !important;
     }
 
-    /* ── Sliders ── */
-    .stSlider [data-baseweb="slider"] {
-        padding-top: 1rem;
-    }
-
-    /* ── Select boxes ── */
-    .stSelectbox [data-baseweb="select"] {
-        background: rgba(255,255,255,0.08) !important;
-        border-radius: 10px !important;
-        border: 1px solid rgba(255,255,255,0.15) !important;
-        color: white !important;
-    }
-
-    /* ── Progress bar ── */
-    .stProgress > div > div {
-        background: linear-gradient(90deg, #00d2ff, #7b2ff7) !important;
-        border-radius: 10px !important;
+    /* ── Section headers ── */
+    h2, h3, h4 {
+        color: #4a2c0a !important;
+        font-weight: 700 !important;
     }
 
     /* ── Divider ── */
     hr {
-        border-color: rgba(255,255,255,0.1) !important;
+        border-color: rgba(139, 94, 60, 0.3) !important;
+        margin: 1.5rem 0 !important;
     }
 
-    /* ── Subheaders ── */
-    h2, h3 {
-        color: #ffffff !important;
-        font-weight: 600 !important;
-    }
-
-    /* ── Prediction Card ── */
-    .predict-card-high {
-        background: linear-gradient(135deg,
-            rgba(255,75,75,0.15), rgba(255,75,75,0.05));
-        border: 1px solid rgba(255,75,75,0.4);
-        border-radius: 20px;
-        padding: 2rem;
-        text-align: center;
-        margin: 1rem 0;
-    }
-    .predict-card-low {
-        background: linear-gradient(135deg,
-            rgba(0,255,136,0.15), rgba(0,255,136,0.05));
-        border: 1px solid rgba(0,255,136,0.4);
-        border-radius: 20px;
-        padding: 2rem;
-        text-align: center;
-        margin: 1rem 0;
-    }
-    .predict-title {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-    }
-    .predict-subtitle {
-        font-size: 1rem;
-        opacity: 0.8;
+    /* ── Selectbox & Slider ── */
+    .stSelectbox [data-baseweb="select"] > div {
+        background: rgba(255, 240, 215, 0.7) !important;
+        border-color: rgba(139, 94, 60, 0.4) !important;
+        border-radius: 10px !important;
+        color: #4a2c0a !important;
     }
 
     /* ── Footer ── */
     .footer {
         text-align: center;
-        padding: 2rem 0 1rem 0;
-        color: rgba(255,255,255,0.4);
-        font-size: 0.85rem;
+        padding: 2rem 0 1rem;
+        color: #7a4a2a;
+        font-size: 0.9rem;
     }
     .footer a {
-        color: #00d2ff !important;
+        color: #4a2c0a !important;
+        font-weight: 600;
         text-decoration: none;
+        border-bottom: 1px solid rgba(74, 44, 10, 0.3);
+    }
+    .footer a:hover {
+        border-bottom-color: #4a2c0a;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -233,35 +259,36 @@ def load_model():
 model, scaler = load_model()
 
 # ── Header ───────────────────────────────────────────────────
-st.markdown('<p class="main-header">📉 Customer Churn Predictor</p>',
-            unsafe_allow_html=True)
 st.markdown(
-    '<p class="sub-header">AI-powered churn prediction using XGBoost · '
-    'Built by Pravallika Chepuri · Arizona State University</p>',
+    '<div class="main-title">📉 Customer Churn Predictor</div>',
+    unsafe_allow_html=True)
+st.markdown(
+    '<div class="sub-title">AI-powered churn prediction using XGBoost · '
+    'Built by Pravallika Chepuri · Arizona State University</div>',
     unsafe_allow_html=True)
 
 # ── Stats Banner ─────────────────────────────────────────────
 c1, c2, c3, c4 = st.columns(4)
-c1.metric("🎯 Accuracy",     "80%+")
-c2.metric("📊 ROC-AUC",      "0.85+")
-c3.metric("👥 Training Data","7,043")
-c4.metric("⚙️ Algorithm",    "XGBoost")
+c1.metric("🎯 Accuracy",      "80%+")
+c2.metric("📊 ROC-AUC",       "0.85+")
+c3.metric("👥 Training Data", "7,043")
+c4.metric("⚙️ Algorithm",     "XGBoost")
 st.markdown("---")
 
-# ── Sidebar Inputs ───────────────────────────────────────────
+# ── Sidebar ──────────────────────────────────────────────────
 st.sidebar.markdown("## 🎛️ Customer Details")
 st.sidebar.markdown("---")
 
 def user_inputs():
     st.sidebar.markdown("### 👤 Demographics")
-    gender          = st.sidebar.selectbox("Gender",
-                      ["Male", "Female"])
-    senior_citizen  = st.sidebar.selectbox("Senior Citizen",
-                      ["No", "Yes"])
-    partner         = st.sidebar.selectbox("Has Partner",
-                      ["No", "Yes"])
-    dependents      = st.sidebar.selectbox("Has Dependents",
-                      ["No", "Yes"])
+    gender           = st.sidebar.selectbox("Gender",
+                       ["Male", "Female"])
+    senior_citizen   = st.sidebar.selectbox("Senior Citizen",
+                       ["No", "Yes"])
+    partner          = st.sidebar.selectbox("Has Partner",
+                       ["No", "Yes"])
+    dependents       = st.sidebar.selectbox("Has Dependents",
+                       ["No", "Yes"])
 
     st.sidebar.markdown("### 📱 Services")
     tenure           = st.sidebar.slider("Tenure (months)",
@@ -289,8 +316,8 @@ def user_inputs():
     contract         = st.sidebar.selectbox("Contract Type",
                        ["Month-to-month","One year","Two year"])
     paperless_billing= st.sidebar.selectbox("Paperless Billing",
-                       ["No", "Yes"])
-    payment_method   = st.sidebar.selectbox("Payment Method",[
+                       ["No","Yes"])
+    payment_method   = st.sidebar.selectbox("Payment Method", [
                        "Electronic check","Mailed check",
                        "Bank transfer (automatic)",
                        "Credit card (automatic)"])
@@ -356,34 +383,31 @@ tab1, tab2, tab3 = st.tabs([
     "📊  Customer Profile",
     "💡  Insights & Tips"])
 
-# ────────────────────────────────────────────────────────────
-# TAB 1
-# ────────────────────────────────────────────────────────────
 with tab1:
     col1, col2 = st.columns([1, 1], gap="large")
 
     with col1:
         if prediction == 1:
             st.markdown(f"""
-            <div class="predict-card-high">
-                <div class="predict-title">⚠️ HIGH CHURN RISK</div>
-                <div class="predict-subtitle">
+            <div class="card-high">
+                <div class="card-title">⚠️ HIGH CHURN RISK</div>
+                <div class="card-subtitle">
                     {churn_prob:.1f}% probability of churning
                 </div>
             </div>""", unsafe_allow_html=True)
         else:
             st.markdown(f"""
-            <div class="predict-card-low">
-                <div class="predict-title">✅ LOW CHURN RISK</div>
-                <div class="predict-subtitle">
+            <div class="card-low">
+                <div class="card-title">✅ LOW CHURN RISK</div>
+                <div class="card-subtitle">
                     {no_churn_prob:.1f}% probability of staying
                 </div>
             </div>""", unsafe_allow_html=True)
 
         st.markdown("#### 📊 Probability Breakdown")
         m1, m2 = st.columns(2)
-        m1.metric("🔴 Churn",     f"{churn_prob:.1f}%")
-        m2.metric("🟢 Retention", f"{no_churn_prob:.1f}%")
+        m1.metric("🔴 Churn Risk",  f"{churn_prob:.1f}%")
+        m2.metric("🟢 Retention",   f"{no_churn_prob:.1f}%")
 
         st.markdown("**Risk Level:**")
         if churn_prob < 30:
@@ -407,16 +431,22 @@ with tab1:
             good_factors.append("✅ Long-term contract")
 
         if raw['tenure'] < 12:
-            risk_factors.append(f"⚠️ **New customer** ({raw['tenure']} months)")
+            risk_factors.append(
+                f"⚠️ **New customer** ({raw['tenure']} months)")
             risk_score += 2
         else:
-            good_factors.append(f"✅ Loyal ({raw['tenure']} months)")
+            good_factors.append(
+                f"✅ Loyal customer ({raw['tenure']} months)")
 
         if raw['monthly_charges'] > 70:
-            risk_factors.append(f"⚠️ **High charges** (${raw['monthly_charges']:.0f}/mo)")
+            risk_factors.append(
+                f"⚠️ **High charges** "
+                f"(${raw['monthly_charges']:.0f}/mo)")
             risk_score += 2
         else:
-            good_factors.append(f"✅ Fair pricing (${raw['monthly_charges']:.0f}/mo)")
+            good_factors.append(
+                f"✅ Fair pricing "
+                f"(${raw['monthly_charges']:.0f}/mo)")
 
         if raw['tech_support'] == "No":
             risk_factors.append("⚠️ **No tech support**")
@@ -425,26 +455,22 @@ with tab1:
             good_factors.append("✅ Has tech support")
 
         if raw['internet_service'] == "Fiber optic":
-            risk_factors.append("⚠️ **Fiber optic** — higher expectations")
+            risk_factors.append(
+                "⚠️ **Fiber optic** — higher expectations")
             risk_score += 1
 
         if risk_factors:
             st.markdown("**🚨 Risk Factors:**")
             for f in risk_factors:
                 st.warning(f)
-
         if good_factors:
             st.markdown("**💪 Strengths:**")
             for f in good_factors:
                 st.success(f)
 
-        risk_pct = int((risk_score / 9) * 100)
-        st.markdown(f"**Risk Score: {risk_score}/9**")
-        st.progress(risk_pct)
+        st.markdown(f"**Overall Risk Score: {risk_score}/9**")
+        st.progress(int((risk_score / 9) * 100))
 
-# ────────────────────────────────────────────────────────────
-# TAB 2
-# ────────────────────────────────────────────────────────────
 with tab2:
     st.markdown("#### 👤 Demographics")
     d1, d2 = st.columns(2)
@@ -477,9 +503,6 @@ with tab2:
         .rename(columns={0:'Value'}),
         use_container_width=True)
 
-# ────────────────────────────────────────────────────────────
-# TAB 3
-# ────────────────────────────────────────────────────────────
 with tab3:
     col1, col2 = st.columns(2)
 
@@ -523,10 +546,10 @@ with tab3:
 st.markdown("---")
 st.markdown("""
 <div class="footer">
-    Built with ❤️ by <strong>Pravallika Chepuri</strong> |
-    Arizona State University |
+    Built with ❤️ by <strong>Pravallika Chepuri</strong> &nbsp;|&nbsp;
+    Arizona State University &nbsp;|&nbsp;
     <a href="https://github.com/Chepuri25/customer-churn-prediction"
-       target="_blank">🐙 GitHub</a> |
+       target="_blank">🐙 GitHub</a> &nbsp;|&nbsp;
     <a href="https://www.linkedin.com/in/pravallika-chepuri"
        target="_blank">💼 LinkedIn</a>
 </div>
